@@ -19,17 +19,17 @@ public class Deck {
 
     //Metode for å stokke kortene
     public void shuffle(){
-        ArrayList<Cards> tempDeck = new ArrayList<Cards>();
+        ArrayList<Cards> shuffleDeck = new ArrayList<Cards>();
         Random random = new Random();
         int randomCardIndex = 0;
         int originalSize = this.cards.size();
         for (int i=0; i < originalSize; i++){
             randomCardIndex = random.nextInt((this.cards.size()- 1 - 0) + 1) + 0;
-            tempDeck.add(this.cards.get(randomCardIndex));
+            shuffleDeck.add(this.cards.get(randomCardIndex));
             //remove from original deck
             this.cards.remove(randomCardIndex);
         }
-        this.cards = tempDeck;
+        this.cards = shuffleDeck;
     }
 
 
@@ -40,7 +40,6 @@ public class Deck {
         }
         return cardList;
     }
-
 
     /*
     //Brukes til å teste om vi har 52 kort, samme som metode over, bare med i
@@ -54,7 +53,6 @@ public class Deck {
         return cardList;
     }
 */
-
     public void removeCard(int i){
         this.cards.remove(i);
     }
@@ -63,13 +61,9 @@ public class Deck {
          return this.cards.get(i);
     }
 
-    public void addCard(Cards addCard){
-        this.cards.add(addCard);
-    }
-
     public int deckSize(){
         return this.cards.size();
-    }
+   }
 
     public void draw(Deck comingFrom){
         this.cards.add(comingFrom.getCard(0)); //Henter ut første kortet, index 0
@@ -78,7 +72,6 @@ public class Deck {
 
     public int cardValue() {
         int totalValue = 0;
-
         for (Cards aCard : this.cards) {
            // System.out.println(totalValue); //tester om verdiene blir lagt sammen riktig
             switch (aCard.getValue()) {
